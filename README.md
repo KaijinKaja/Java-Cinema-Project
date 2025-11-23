@@ -1,1 +1,2 @@
-Input your code in here part part
+Click Cinemae 
+Input your code in here per part
