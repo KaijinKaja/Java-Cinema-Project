@@ -2,6 +2,7 @@
 
 
 // Pay & Name
+//Note: Kiro I'll edit this part to be compatible with your code after you put yours.
   System.out.print("Enter reservation name: ");
   String name = kbd.nextLine();
 
