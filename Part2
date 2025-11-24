@@ -1,1 +1,23 @@
 //Selection of Seats 
+
+
+// Pay & Name
+  System.out.print("Enter reservation name: ");
+  String name = kbd.nextLine();
+
+  int cost = prices[time] * numSeats;
+  System.out.println("Total cost: Php " + cost);
+  System.out.print("Enter payment amount: ");
+  int pay = kbd.nextInt();
+
+  if (pay < cost) {
+  System.out.println("Payment failed!");
+  return;
+  }
+    System.out.println("Payment Successful!");
+    System.out.println("Change: Php " + (pay - cost));
+    for (int c : chosen) {
+      seats[movie][time][c - 1] = name;
+      }
+        System.out.println("Booking Confirmed!");
+}
