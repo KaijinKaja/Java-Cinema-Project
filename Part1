@@ -1,2 +1,58 @@
 //Display
+import java.util.Scanner;
+public class CinemaBookingSys {
+    public static void main(String[] args) {
+        Scanner kbd = new Scanner(System.in);
 
+        int option;
+        do {
+            String[] userMenu = {
+                    "1. Reserve Movie Ticket",
+                    "2. Cancel Movie Ticket",
+                    "3. Check Available Seats",
+                    "4. Exit"
+            };
+
+            System.out.println("--- Ticket Booking System ---");
+            for(String u:userMenu){
+                System.out.println(u);
+            }
+
+            System.out.print("Select an option:");
+            option = Integer.parseInt(kbd.nextLine());
+
+            switch (option) {
+                case 1:
+                    reserveMovieTicket();
+                    break;
+                case 2:
+                    cancelMovieTicket();
+                    break;
+                case 3:
+                    checkSeats();
+                    break;
+                case 4 :
+                    exit();
+                    break;
+                default:
+                    System.out.println("Invalid Option.");
+            }
+
+
+        } while (option <= 0|| option > 4);
+    }
+
+    static void reserveMovieTicket() {
+        Scanner kbd = new Scanner(System.in);
+
+        String[] movies = {
+                "1. Wicked: For Good",
+                "2. Frankenstein",
+                "3. Now You See Me: Now You Don't",
+                "4. The Fantastic Four: First Steps"
+        };
+
+        System.out.println("Available Movies:");
+        for(String m:movies){
+            System.out.println(m);
+        }
