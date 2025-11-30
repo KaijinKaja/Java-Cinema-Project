@@ -1,4 +1,38 @@
 //Selection of Seats 
+int "kung ano man yung array name sa main method" = chosenMoviel; //Declare lang muna ng variables
+    int "kung ano man name ng chosen show time sa main method" = chosenTime;
+    listOfSeats (variable movie,variable time); // dito mag de-depend kung anong display list of seats mag show from the chosen movie and time by the customer.
+
+    System.out.println ("Number of seat to be reserved: ");
+    int numSeat = Integer.parsedInt(kbd.nextLine()); // dito masasave yung number ng marereserve na seat
+
+    // afterwards, pipili na ng seat position.
+    int availableSeats = seatPosition (variable movie,variable time); // this will show the available seats depending on the movie and time picked.
+
+    // this will be a verification, this will check whether the number of reservation of the customer can be accomodated by the chosen movie-time.
+    if (numSeat > availableSeats) {
+    System.out.println ("The chosen amount cannot be accomodated at this time.."); //the message will be displayed once the condition is not within parameters.
+    return; // uulit yung buong code from the start, until mag meet sa parameters ng condition yung input ng user.
+}
+    int occupied = new int [numSeat];
+
+        for (int i=0; i<numSeat; i++) { //this part of the code will run until the inputed reservation number until i is greater than numSeat.
+            System.out.println ("Seat #" + (i+1) + ": ");
+            int seatNum = Integer.parsedInt(kbd.nextLine());
+
+            if (seatNum < 1 || seatNum > numSeat) {             // under the condition that it is not in the under 1 or greater than 10, the code will run
+                System.out.println ("Invalid input! Seat #");
+                i--
+                continue;
+}
+            if (vacancies [movie][time] [occupied-1] !=null) {  // using array, this will determine whether a chosen reservation seat is occupied or not, and if it is already taken, then the code will reset.
+                System.out.println("Seat already taken!");
+                i--;
+                continue;
+            }
+           occupied[i] =seatNum; // this will record the number of occupied seats
+        }
+        ]
 
 
 // Pay & Name
