@@ -1,4 +1,34 @@
 //Cancellation or Refund 
-public static int cancelRefund() {
-  
-}
+static void cancelMovieTicket(){
+        Scanner kbd = new Scanner(System.in);
+        //display movies
+        System.out.println("Available Movies:");
+        for (int i = 0; i < movies.length; i++) {
+            System.out.println((i + 1) + ". " + movies[i]);
+        }
+        System.out.print("Select a movie: ");
+        int movieIndex = Integer.parseInt(kbd.nextLine()) - 1;
+
+        //display showtimes
+        System.out.println("Available Showtimes for " + movies[movieIndex] + ":");
+        for (int i = 0; i < showtimes.length; i++) {
+            System.out.println((i + 1) + ". " + showtimes[i] + " (" + prices[i] + " PHP)");
+        }
+        System.out.print("Select showtime: ");
+        int timeIndex = Integer.parseInt(kbd.nextLine()) - 1;
+
+        //input Name
+        System.out.print("Enter reservation name to cancel: ");
+        String name = kbd.nextLine();
+
+        boolean found = false;
+
+        //sort with the entered name
+        for (int i = 0; i < 10; i++) {
+            if (seats[movieIndex][timeIndex][i] != null &&
+                    seats[movieIndex][timeIndex][i].equalsIgnoreCase(name)) {
+
+                // Clear the seat
+                seats[movieIndex][timeIndex][i] = null;
+
+                found = true;
