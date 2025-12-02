@@ -36,13 +36,12 @@ public class GroupCinema {
 
                 option = Integer.parseInt(kbd.nextLine());
 
-                switch (option) {
-                    case 1: reserveMovieTicket(); break;
-                    case 2: cancelMovieTicket(); break;
-                    case 3: checkSeats(); break;
-                    case 4: exit(); break;
-                    default:
-                        System.out.println("Invalid Option.");
+               switch (option) {
+                case 1 -> reserveMovieTicket();
+                case 2 -> cancelMovieTicket();
+                case 3 -> checkSeats();
+                case 4 -> exit();
+                default -> System.out.println("Invalid Option.");
                 }
 
             } while (option != 4);
@@ -194,6 +193,7 @@ public class GroupCinema {
             System.out.println("Thank you, Goodbye");
         }
     }
+
 
 
 
