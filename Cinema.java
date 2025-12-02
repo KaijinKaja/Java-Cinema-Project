@@ -151,7 +151,7 @@ public class FinalProject {
             System.out.println("Total Vacant Seats: " + countVacant(movie, time));
         }
 
-        // Louisian Programming Methods
+        // Methods
         static int chooseMovie() {
             System.out.println("\nAvailable Movies:");
             for (int i = 0; i < movies.length; i++) {
@@ -192,6 +192,7 @@ public class FinalProject {
             System.out.println("Thank you, Goodbye");
         }
     }
+
 
 
 
