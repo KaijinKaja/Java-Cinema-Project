@@ -1,6 +1,29 @@
-//Display still not done editing, nakatulog ako dahil sa pagod srry:')
+//Okay na kami ni jaja sa part na ito
+//srry natagalan nakatulog na me last night paguwi ko
+//galing parade:,D
+
 import java.util.Scanner;
 public class CinemaBookingSys {
+
+    static String[]movies={
+            " Wicked: For Good",
+            " Frankenstein",
+            " Now You See Me: Now You Don't",
+            " The Fantastic Four: First Steps"
+    };
+
+    static String[]showtime={
+            " 1:00 PM – Regular (₱450)",
+            " 3:00 PM – Regular (₱450)",
+            " 5:00 PM – 3D (₱950)",
+            " 7:00 PM – Director’s Cut (₱1500)"
+    };
+
+    static int[] prices = {450, 450, 950, 1500};
+
+    static String[][][] seats = new String[4][4][10];
+
+
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
 
@@ -23,7 +46,7 @@ public class CinemaBookingSys {
 
             switch (option) {
                 case 1:
-                    reserveMovieTicket();
+                    reserveMovieTicket(kbd);
                     break;
                 case 2:
                     cancelMovieTicket();
@@ -39,32 +62,47 @@ public class CinemaBookingSys {
             }
 
 
-        } while (option != 4);
+        } while (option !=4);
     }
 
-    static void reserveMovieTicket() {
-        Scanner kbd = new Scanner(System.in);
-
-        String[] movies = {
-                "1. Wicked: For Good",
-                "2. Frankenstein",
-                "3. Now You See Me: Now You Don't",
-                "4. The Fantastic Four: First Steps"
-        };
+    static void reserveMovieTicket(Scanner kbd) {
 
         System.out.println("Available Movies:");
-        for(String m:movies){
-            System.out.println(m);
+        for(int m = 0; m < movies.length;m++){
+            System.out.println((m + 1)+ ". "+movies[m]);
         }
 
-       String[] showtimes = {
-            "1:00 PM – Regular (₱450)",
-            "3:00 PM – Regular (₱450)",
-            "5:00 PM – 3D (₱950)",
-            "7:00 PM – Director’s Cut (₱1500)"
-    };
-    for (int i = 0; i < showtimes.length; i++) {
-            System.out.println((i + 1) + ". " + showtimes[i]);
+        System.out.print("Select a Movie:");
+        int movieTicket = Integer.parseInt(kbd.nextLine());
+
+
+        System.out.println("Available Show Times:");
+        for (int i = 0; i < showtime.length; i++) {
+            System.out.println((i + 1) + ". " + showtime[i]);
         }
-        System.out.print("Select showtime: ");
-    String[][][] seats = new String[4][4][10];
+
+        System.out.print("Select an Option:");
+        int watchtime = Integer.parseInt(kbd.nextLine());
+
+        for (int i = 0; i < 10; i++) {
+            String status = (seats[movieTicket][watchtime][i] == null)
+                    ? "Vacant"
+                    : seats[movieTicket][watchtime][i];
+            System.out.println("[" + (i + 1) + "] " + status);
+
+        }
+        
+    }
+    static void cancelMovieTicket() {
+    }
+
+    static void checkSeats() {
+    }
+    
+    static void exit() {
+
+    }
+
+}
+
+ 
