@@ -28,7 +28,33 @@ static void cancelMovieTicket(){
             if (seats[movieIndex][timeIndex][i] != null &&
                     seats[movieIndex][timeIndex][i].equalsIgnoreCase(name)) {
 
-                // Clear the seat
+                found = true;
+
+        // Ask if user wants a refund
+          System.out.print("Do you want to cancel and refund this ticket? (Y/N): ");
+                String confirm = kbd.nextLine();
+
+                if (confirm.equalsIgnoreCase("Y")) {
+
+                double refundAmount = prices[timeIndex];
+
+                //Clear the seat
                 seats[movieIndex][timeIndex][i] = null;
 
-                found = true;
+                System.out.println("\nTicket has been cancelled.");
+                System.out.println("Refund Amount: " + refundAmount + " PHP");
+                System.out.println("Refund Successful.\n");
+            } else if (confirm.equalsIgnoreCase("N")) {
+                System.out.println("\nCancellation Aborted. ");
+                System.out.println("Ticket Remains Booked.\n");
+                } else {
+                System.out.println("\nInvalid Input.");
+                System.out.println("Ticket Remains Booked.\n");
+                }
+                break;
+             }
+        }
+        if (!found) {
+                  System.out.println("\nNo Reservation Found Under That Name.");
+        }
+}        
