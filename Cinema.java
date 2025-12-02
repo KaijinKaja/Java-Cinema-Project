@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class CinemaFinalProject {
+public class FinalProjectGroup2 {
     static Scanner kbd = new Scanner(System.in);
 
     //Movies & Showtimes
@@ -9,6 +9,7 @@ public class CinemaFinalProject {
             "Now You See Me: Now You Don't",
             "The Fantastic Four: First Steps"
     };
+
     static String[] showtimes = {
             "1:00 PM – Regular",
             "3:00 PM – Regular",
@@ -94,6 +95,11 @@ public class CinemaFinalProject {
                         System.out.println("Seat is already taken.");
                         continue;
                     }
+                    if (alreadyChosen(chosenSeats, seatNum)) {
+                        System.out.println("You already selected that seat.");
+                        continue;
+                    }
+
                     chosenSeats[i] = seatNum;
                     break;
 
@@ -119,7 +125,7 @@ public class CinemaFinalProject {
             System.out.println("Invalid or Insufficient payment.");
         }
 
-        System.out.println("Payment successful!");
+        System.out.println("Payment Successful!");
         System.out.println("Change: ₱" + (payment - totalCost));
 
         //Save seats
@@ -128,8 +134,6 @@ public class CinemaFinalProject {
         }
 
         //Receipt
-        System.out.println("Payment Successful!");
-        System.out.println("Change: ₱" + (payment - totalCost));
         System.out.println("Booking Confirmed for " + name);
         System.out.println("Movie: " + movies[movie]);
         System.out.println("Showtime: " + showtimes[time]);
@@ -141,12 +145,22 @@ public class CinemaFinalProject {
         System.out.println();
     }
 
+    //Helper: prevents choosing the same seat twice
+    static boolean alreadyChosen(int[] chosen, int seatNum) {
+        for (int n : chosen) {
+            if (n == seatNum) return true;
+        }
+        return false;
+    }
+
     //Cancellation of Reservation
     static void cancelMovieTicket() {
         int movie = chooseMovie();
         int time = chooseShowtime();
+
         System.out.print("Enter reservation name: ");
         String name = kbd.nextLine();
+
         boolean found = false;
         int seatCount = 0;
 
@@ -163,7 +177,6 @@ public class CinemaFinalProject {
             return;
         }
 
-        //Refund 
         int refund = (int) (prices[time] * seatCount * 0.70);
         System.out.println("Reservation canceled.");
         System.out.println("Refund Amount: ₱" + refund);
@@ -173,6 +186,7 @@ public class CinemaFinalProject {
     static void checkSeats() {
         int movie = chooseMovie();
         int time = chooseShowtime();
+
         showSeatList(movie, time);
         System.out.println("Total Vacant Seats: " + countVacant(movie, time));
     }
@@ -238,4 +252,3 @@ public class CinemaFinalProject {
         System.out.println("Thank you, Goodbye");
     }
 }
-
