@@ -1,15 +1,14 @@
 import java.util.Scanner;
-public class Cinema {
-        static Scanner kbd = new Scanner(System.in);
+public class FinalProject { 
+    static Scanner kbd = new Scanner(System.in);
 
-        // Movies & Showtimes
-        static String[] movies = {
-                "Wicked: For Good",
-                "Frankenstein",
-                "Now You See Me: Now You Don't",
-                "The Fantastic Four: First Steps"
-        };
-
+    // Movies & Showtimes
+    static String[] movies = {
+            "Wicked: For Good",
+            "Frankenstein",
+            "Now You See Me: Now You Don't",
+            "The Fantastic Four: First Steps"
+    };
         static String[] showtimes = {
                 "1:00 PM – Regular",
                 "3:00 PM – Regular",
@@ -53,13 +52,13 @@ public class Cinema {
 
             showSeatList(movie, time);
 
-            System.out.print("Number of seats to reserve: ");
+            System.out.print("Enter number of seats to reserve: ");
             int numSeat = Integer.parseInt(kbd.nextLine());
 
             int available = countVacant(movie, time);
 
             if (numSeat > available) {
-                System.out.println("Not enough available seats for this showtime!");
+                System.out.println("Not enough available seats for this showtime");
                 return;
             }
 
@@ -67,15 +66,16 @@ public class Cinema {
 
             // Seat selection loop
             for (int i = 0; i < numSeat; i++) {
-                System.out.print("Seat #" + (i + 1) + ": ");
+                System.out.print("Enter seat number: ");
                 int seatNum = Integer.parseInt(kbd.nextLine());
+
                 if (seatNum < 1 || seatNum > 10) {
                     System.out.println("Invalid seat. Choose between 1–10.");
                     i--;
                     continue;
                 }
                 if (seats[movie][time][seatNum - 1] != null) {
-                    System.out.println("Seat has already taken");
+                    System.out.println("Seat already taken.");
                     i--;
                     continue;
                 }
@@ -86,7 +86,7 @@ public class Cinema {
             System.out.print("Enter reservation name: ");
             String name = kbd.nextLine();
             int totalCost = prices[time] * numSeat;
-            System.out.println("Total Payment: Php " + totalCost);
+            System.out.println("Total Payment: ₱" + totalCost);
             System.out.print("Enter amount: ");
             int payment = Integer.parseInt(kbd.nextLine());
             if (payment < totalCost) {
@@ -94,13 +94,25 @@ public class Cinema {
                 return;
             }
             System.out.println("Payment successful!");
-            System.out.println("Change: Php " + (payment - totalCost));
+            System.out.println("Change: ₱" + (payment - totalCost));
 
             // Save seats
             for (int s : chosenSeats) {
                 seats[movie][time][s - 1] = name;
             }
-            System.out.println("Reservation Confirmed");
+
+            // Receipt
+            System.out.println("Payment Successful!");
+            System.out.println("Change: ₱" + (payment - totalCost));
+            System.out.println("Booking Confirmed for " + name);
+            System.out.println("Movie: " + movies[movie]);
+            System.out.println("Showtime: " + showtimes[time]);
+
+            System.out.print("Reserved Seats: ");
+            for (int s : chosenSeats) {
+                System.out.print("[" + s + "] ");
+            }
+            System.out.println();
         }
 
         // Cancellation of Reservation
@@ -128,7 +140,7 @@ public class Cinema {
             // Refund = 70%
             int refund = (int) (prices[time] * seatCount * 0.70);
             System.out.println("Reservation canceled.");
-            System.out.println("Refund Amount: Php " + refund);
+            System.out.println("Refund Amount: ₱" + refund);
         }
 
         // Checking of Seats
@@ -152,7 +164,7 @@ public class Cinema {
         static int chooseShowtime() {
             System.out.println("\nAvailable Showtimes:");
             for (int i = 0; i < showtimes.length; i++) {
-                System.out.println((i + 1) + ". " + showtimes[i] + " (Php" + prices[i] + ")");
+                System.out.println((i + 1) + ". " + showtimes[i] + " (₱" + prices[i] + ")");
             }
             System.out.print("Select showtime: ");
             return Integer.parseInt(kbd.nextLine()) - 1;
