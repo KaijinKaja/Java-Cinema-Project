@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class FinalProject {
+public class CinemaFinalProject {
     static Scanner kbd = new Scanner(System.in);
 
     //Movies & Showtimes
@@ -238,3 +238,4 @@ public class FinalProject {
         System.out.println("Thank you, Goodbye");
     }
 }
+
