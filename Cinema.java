@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class GroupCinema {
+public class Cinema {
         static Scanner kbd = new Scanner(System.in);
 
         // Movies & Showtimes
@@ -17,7 +17,7 @@ public class GroupCinema {
                 "7:00 PM – Director’s Cut"
         };
 
-        // Prices 
+        // Prices
         static int[] prices = {450, 450, 950, 1500};
 
         // Seats
@@ -36,12 +36,12 @@ public class GroupCinema {
 
                 option = Integer.parseInt(kbd.nextLine());
 
-               switch (option) {
-                case 1 -> reserveMovieTicket();
-                case 2 -> cancelMovieTicket();
-                case 3 -> checkSeats();
-                case 4 -> exit();
-                default -> System.out.println("Invalid Option.");
+                switch (option) {
+                    case 1 -> reserveMovieTicket();
+                    case 2 -> cancelMovieTicket();
+                    case 3 -> checkSeats();
+                    case 4 -> exit();
+                    default -> System.out.println("Invalid Option.");
                 }
 
             } while (option != 4);
@@ -68,58 +68,47 @@ public class GroupCinema {
             // Seat selection loop
             for (int i = 0; i < numSeat; i++) {
                 System.out.print("Seat #" + (i + 1) + ": ");
-
                 int seatNum = Integer.parseInt(kbd.nextLine());
-
                 if (seatNum < 1 || seatNum > 10) {
                     System.out.println("Invalid seat. Choose between 1–10.");
                     i--;
                     continue;
                 }
-
                 if (seats[movie][time][seatNum - 1] != null) {
-                    System.out.println("Seat already taken!");
+                    System.out.println("Seat has already taken");
                     i--;
                     continue;
                 }
-
                 chosenSeats[i] = seatNum;
             }
 
             // Payment
             System.out.print("Enter reservation name: ");
             String name = kbd.nextLine();
-
             int totalCost = prices[time] * numSeat;
-            System.out.println("Total Payment: Php" + totalCost);
-
+            System.out.println("Total Payment: Php " + totalCost);
             System.out.print("Enter amount: ");
             int payment = Integer.parseInt(kbd.nextLine());
-
             if (payment < totalCost) {
-                System.out.println("Payment failed. Not enough amount.");
+                System.out.println("Payment failed");
                 return;
             }
-
             System.out.println("Payment successful!");
-            System.out.println("Change: Php" + (payment - totalCost));
+            System.out.println("Change: Php " + (payment - totalCost));
 
             // Save seats
             for (int s : chosenSeats) {
                 seats[movie][time][s - 1] = name;
             }
-
-            System.out.println("Booking confirmed!");
+            System.out.println("Reservation Confirmed");
         }
 
         // Cancellation of Reservation
         static void cancelMovieTicket() {
             int movie = chooseMovie();
             int time = chooseShowtime();
-
             System.out.print("Enter reservation name: ");
             String name = kbd.nextLine();
-
             boolean found = false;
             int seatCount = 0;
 
@@ -138,16 +127,14 @@ public class GroupCinema {
 
             // Refund = 70%
             int refund = (int) (prices[time] * seatCount * 0.70);
-
             System.out.println("Reservation canceled.");
-            System.out.println("Refund Amount: Php" + refund);
+            System.out.println("Refund Amount: Php " + refund);
         }
 
         // Checking of Seats
         static void checkSeats() {
             int movie = chooseMovie();
             int time = chooseShowtime();
-
             showSeatList(movie, time);
             System.out.println("Total Vacant Seats: " + countVacant(movie, time));
         }
