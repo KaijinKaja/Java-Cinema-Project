@@ -166,7 +166,7 @@ public class GroupCinema {
         static int chooseShowtime() {
             System.out.println("\nAvailable Showtimes:");
             for (int i = 0; i < showtimes.length; i++) {
-                System.out.println((i + 1) + ". " + showtimes[i] + " (₱" + prices[i] + ")");
+                System.out.println((i + 1) + ". " + showtimes[i] + " (Php" + prices[i] + ")");
             }
             System.out.print("Select showtime: ");
             return Integer.parseInt(kbd.nextLine()) - 1;
@@ -194,6 +194,7 @@ public class GroupCinema {
             System.out.println("Thank you, Goodbye");
         }
     }
+
 
 
 
