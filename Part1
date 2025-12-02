@@ -1,4 +1,4 @@
-//Display
+//Display still not done editing, nakatulog ako dahil sa pagod srry:')
 import java.util.Scanner;
 public class CinemaBookingSys {
     public static void main(String[] args) {
@@ -39,7 +39,7 @@ public class CinemaBookingSys {
             }
 
 
-        } while (option <= 0|| option > 4);
+        } while (option != 4);
     }
 
     static void reserveMovieTicket() {
@@ -56,3 +56,15 @@ public class CinemaBookingSys {
         for(String m:movies){
             System.out.println(m);
         }
+
+       String[] showtimes = {
+            "1:00 PM – Regular (₱450)",
+            "3:00 PM – Regular (₱450)",
+            "5:00 PM – 3D (₱950)",
+            "7:00 PM – Director’s Cut (₱1500)"
+    };
+    for (int i = 0; i < showtimes.length; i++) {
+            System.out.println((i + 1) + ". " + showtimes[i]);
+        }
+        System.out.print("Select showtime: ");
+    String[][][] seats = new String[4][4][10];
